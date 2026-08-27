@@ -1,23 +1,755 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css"/>
-<title> Le titre qui apparaitra dans le navigateur </title>
-<meta charset="UTF-8">
-</head>
+<title>Eddy Faucher, Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
 
-<body>
-<h1> Bienvenu(e) jeune Pandawane 
-</h1>
+<style>
+  :root {
+    --paper:      #F7F4F2;
+    --surface:    #FFFFFF;
+    --ink:        #191512;
+    --muted:      #6D625B;
+    --rule:       #E2DAD5;
+    --signal:     #B32B2B;
+    --signal-soft:#F0E0DE;
+    --steel:      #33566E;
 
-<a 
-href= "http://www.wildcodeschool.com"> Ecole des PandaWanalysts 
-</a>
-<p> Rejoins-nous !</p>
-<h2> Toi aussi tu pourras avoir ta page hmtl </h2>
-<img src= "https://imgs.search.brave.com/V_Zv4gMMKT5rg4moaiB4zpcKadQ1aM54M8ob2JirlZs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90b3dh/cmRzZGF0YXNjaWVu/Y2UuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDI1LzExL3Bh/bmRhcy1kYXRhZnJh/bWUuanBn">
-<p> A tout de suite  </p> 
-</body> 
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "Newsreader", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
-</html>
+    --measure: 68ch;
+    --page: 1080px;
+  }
 
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #141110;
+      --surface:    #1D1917;
+      --ink:        #F1EBE6;
+      --muted:      #A2968E;
+      --rule:       #322B27;
+      --signal:     #E4685F;
+      --signal-soft:#3A211F;
+      --steel:      #86AAC6;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #141110;
+    --surface:    #1D1917;
+    --ink:        #F1EBE6;
+    --muted:      #A2968E;
+    --rule:       #322B27;
+    --signal:     #E4685F;
+    --signal-soft:#3A211F;
+    --steel:      #86AAC6;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: var(--page);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 56px);
+  }
+
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; text-wrap: balance; margin: 0; line-height: 1.1; }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero { padding: clamp(56px, 9vw, 104px) 0 clamp(40px, 6vw, 72px); }
+
+  .hero-mark {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+  .hero-mark .bar {
+    width: 40px; height: 3px; background: var(--signal); flex: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 8vw, 82px);
+    font-weight: 800;
+    letter-spacing: -0.028em;
+    margin-bottom: 20px;
+  }
+  .hero h1 .role {
+    display: block;
+    font-size: clamp(19px, 3vw, 27px);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--signal);
+    margin-top: 12px;
+  }
+
+  .thesis {
+    max-width: var(--measure);
+    font-size: clamp(19px, 2.4vw, 23px);
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .thesis em { font-style: italic; color: var(--muted); }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin-top: 36px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .hero-meta span { display: inline-flex; align-items: baseline; gap: 8px; }
+  .hero-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); transform: translateY(-1px); flex: none; }
+
+  /* ---------- Section frame ---------- */
+
+  section { padding: clamp(48px, 7vw, 88px) 0; border-top: 1px solid var(--rule); }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin-bottom: clamp(32px, 5vw, 52px);
+  }
+  .section-head h2 {
+    font-size: clamp(26px, 4vw, 38px);
+    letter-spacing: -0.02em;
+  }
+  .section-head p {
+    margin: 0;
+    max-width: var(--measure);
+    color: var(--muted);
+    font-size: 17px;
+  }
+
+  /* ---------- Parcours (track diagram) ---------- */
+
+  .track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0;
+    position: relative;
+    margin-top: 8px;
+  }
+  .stop {
+    padding: 28px 18px 0 0;
+    border-top: 2px solid var(--rule);
+    position: relative;
+  }
+  .stop::before {
+    content: "";
+    position: absolute;
+    top: -6px; left: 0;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--muted);
+  }
+  .stop.now { border-top-color: var(--signal); }
+  .stop.now::before { background: var(--signal); border-color: var(--signal); }
+  .stop .year {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .stop.now .year { color: var(--signal); }
+  .stop .what {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 15.5px;
+    line-height: 1.3;
+    display: block;
+  }
+  .stop .where { font-size: 14.5px; color: var(--muted); line-height: 1.4; display: block; margin-top: 4px; }
+
+  /* ---------- Skills ---------- */
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .skill {
+    background: var(--surface);
+    padding: 24px 22px;
+  }
+  .skill h3 {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    margin-bottom: 12px;
+  }
+  .skill ul { margin: 0; padding: 0; list-style: none; }
+  .skill li {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: var(--muted);
+  }
+
+  /* ---------- Projects ---------- */
+
+  .projects { display: flex; flex-direction: column; gap: clamp(40px, 6vw, 72px); }
+
+  .project {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: clamp(26px, 4vw, 44px);
+  }
+  @media (min-width: 860px) {
+    .project { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(32px, 4vw, 56px); }
+  }
+
+  .project-index {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .project-index .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--signal);
+    letter-spacing: 0.1em;
+  }
+  .project h3 {
+    font-size: clamp(24px, 3.4vw, 32px);
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .project .problem {
+    max-width: var(--measure);
+    color: var(--muted);
+    margin: 0 0 22px;
+    font-size: 17px;
+  }
+
+  .role-note {
+    border-left: 2px solid var(--steel);
+    padding: 2px 0 2px 16px;
+    margin: 0 0 24px;
+    font-size: 15.5px;
+    color: var(--muted);
+  }
+  .role-note strong { color: var(--ink); font-weight: 500; }
+
+  .steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .steps li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16px; }
+  .steps li::before {
+    content: "";
+    width: 7px; height: 7px;
+    background: var(--signal);
+    margin-top: 11px;
+    margin-left: 4px;
+  }
+  .steps strong { font-family: var(--display); font-weight: 600; font-size: 15px; display: block; margin-bottom: 1px; }
+  .steps span { color: var(--muted); font-size: 15.5px; line-height: 1.5; }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 22px;
+  }
+  .kpi { background: var(--surface); padding: 16px 14px; }
+  .kpi .v {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(20px, 2.6vw, 25px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    display: block;
+    line-height: 1.15;
+  }
+  .kpi .l {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-top: 7px;
+    line-height: 1.45;
+  }
+
+  .finding {
+    background: var(--signal-soft);
+    border-left: 3px solid var(--signal);
+    padding: 18px 20px;
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+  .finding .eyebrow { color: var(--signal); display: block; margin-bottom: 7px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+  .chip {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    padding: 5px 10px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .links { display: flex; flex-wrap: wrap; gap: 18px; }
+  .links a {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--signal);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity .15s ease;
+  }
+  .links a:hover { opacity: .65; }
+
+  .caveat {
+    font-size: 14.5px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    margin: 22px 0 0;
+  }
+  .caveat strong { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 13px; letter-spacing: 0.03em; text-transform: uppercase; display: block; margin-bottom: 5px; }
+
+  .table-scroll { overflow-x: auto; }
+
+  /* ---------- Contact ---------- */
+
+  .contact { display: grid; gap: 26px; }
+  .contact-lines { display: flex; flex-direction: column; gap: 12px; }
+  .contact-lines a, .contact-lines span {
+    font-family: var(--mono);
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .contact-lines a { color: var(--ink); border-bottom: 1px solid var(--rule); width: fit-content; padding-bottom: 3px; }
+  .contact-lines a:hover { border-color: var(--signal); color: var(--signal); }
+  .contact-lines .k { color: var(--muted); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; min-width: 78px; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 28px 0 44px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-mark">
+      <span class="bar"></span>
+      <span class="eyebrow">Portfolio · 2026</span>
+    </div>
+
+    <h1>
+      Eddy Faucher
+      <span class="role">Data Analyst — certifié RNCP niveau 6</span>
+    </h1>
+
+    <p class="thesis">
+      Pendant dix-huit ans, j'ai conduit des trains. J'analyse aujourd'hui des données —
+      et les deux métiers demandent la même chose : <em>lire des indicateurs vite, expliquer un écart,
+      décider sans marge d'erreur.</em> Ce qui m'intéresse, c'est le moment précis où une donnée brute
+      devient une décision que quelqu'un peut prendre.
+    </p>
+
+    <div class="hero-meta">
+      <span><i class="dot"></i>Disponible — Île-de-France &amp; France entière</span>
+      <span>SQL · Python · Power BI</span>
+      <span>Transport · Mobilité · Logistique</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <span class="eyebrow">Parcours</span>
+      <h2>Du poste de conduite à la donnée</h2>
+      <p>
+        Une reconversion menée jusqu'au bout : titre professionnel de niveau 6 obtenu en août 2026,
+        après quatre certifications transport et dix-huit ans d'exploitation sur le terrain.
+      </p>
+    </div>
+
+    <div class="track">
+      <div class="stop">
+        <span class="year">2008 — 2017</span>
+        <span class="what">Entrepreneur indépendant</span>
+        <span class="where">Transport de personnes — activité créée et pilotée seul, neuf ans</span>
+      </div>
+      <div class="stop">
+        <span class="year">2017 — 2022</span>
+        <span class="what">Conducteur de trains</span>
+        <span class="where">SNCF — voyageurs, réseau francilien</span>
+      </div>
+      <div class="stop">
+        <span class="year">2022 — 2025</span>
+        <span class="what">Conducteur de trains</span>
+        <span class="where">E.T.M.F. puis ETF Services — fret et matériels de chantier, France entière</span>
+      </div>
+      <div class="stop now">
+        <span class="year">2026</span>
+        <span class="what">Data Analyst</span>
+        <span class="where">Titre professionnel niveau 6 (RNCP 37429) — Wild Code School, Paris</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="eyebrow">Compétences</span>
+      <h2>Ce que je sais faire, de la collecte à la décision</h2>
+    </div>
+
+    <div class="skills">
+      <div class="skill">
+        <h3>Bases de données</h3>
+        <ul>
+          <li>SQL avancé — CTE, sous-requêtes</li>
+          <li>Fonctions de fenêtrage</li>
+          <li>MySQL · DBeaver</li>
+          <li>Modélisation relationnelle</li>
+          <li>Schéma en étoile</li>
+          <li>Vues analytiques</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h3>Python &amp; analyse</h3>
+        <ul>
+          <li>Pandas · NumPy</li>
+          <li>Nettoyage et fiabilisation</li>
+          <li>Statistiques descriptives</li>
+          <li>scikit-learn</li>
+          <li>NLTK · traitement du texte</li>
+          <li>Matplotlib · Seaborn</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h3>Collecte &amp; ETL</h3>
+        <ul>
+          <li>Pipelines de traitement</li>
+          <li>Apache Airflow — DAG</li>
+          <li>Web scraping</li>
+          <li>API REST — HTTP / JSON</li>
+          <li>Docker</li>
+          <li>Git · GitHub</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h3>Restitution</h3>
+        <ul>
+          <li>Power BI — DAX, Power Query</li>
+          <li>Tableau · Streamlit</li>
+          <li>Définition de KPI</li>
+          <li>Tableaux de bord interactifs</li>
+          <li>Data storytelling</li>
+          <li>Excel — TCD, formules</li>
+        </ul>
+      </div>
+      <div class="skill">
+        <h3>Méthode</h3>
+        <ul>
+          <li>Qualité de données</li>
+          <li>Conformité RGPD</li>
+          <li>Contrôle des biais</li>
+          <li>Scrum · travail en équipe</li>
+          <li>Documentation technique</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="eyebrow">Projets certifiants</span>
+      <h2>Trois projets, trois maillons de la chaîne</h2>
+      <p>
+        Menés dans l'ordre du cursus, chacun ajoutant un maillon : la modélisation SQL et la restitution,
+        puis l'industrialisation d'un pipeline à grande échelle, puis l'orchestration et l'analyse de texte.
+      </p>
+    </div>
+
+    <div class="projects">
+
+      <!-- ============ PROJET 01 ============ -->
+      <article class="project">
+        <div>
+          <div class="project-index">
+            <span class="num">Projet 01</span>
+            <span class="eyebrow">SQL · Business Intelligence</span>
+          </div>
+          <h3>Toys &amp; Models — analyse logistique</h3>
+          <p class="problem">
+            Un distributeur de modèles réduits ne sait ni combien de temps met une commande à partir,
+            ni quelles références sont en tension de stock. L'information dort dans la base : il faut une
+            requête manuelle à chaque question posée.
+          </p>
+
+          <ul class="steps">
+            <li>
+              <strong>Cadrage</strong>
+              <span>Inventaire des 8 tables et de leurs clés, puis traduction des questions métier en indicateurs mesurables.</span>
+            </li>
+            <li>
+              <strong>Couche analytique</strong>
+              <span>Cinq vues SQL construites avec CTE, sous-requêtes corrélées, <code>DATEDIFF</code> et jointures multiples : délai de traitement, commandes hors délais, stock critique, taux d'écoulement.</span>
+            </li>
+            <li>
+              <strong>Restitution</strong>
+              <span>Modèle Power BI à six tables, mesure DAX <code>%CommandesDansDelai</code> et deux pages de rapport consultables par l'équipe logistique elle-même.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="kpis">
+            <div class="kpi"><span class="v">3,76 j</span><span class="l">Délai moyen de traitement</span></div>
+            <div class="kpi"><span class="v">65 j</span><span class="l">Délai maximum observé</span></div>
+            <div class="kpi"><span class="v">52/110</span><span class="l">Références sous le stock moyen</span></div>
+            <div class="kpi"><span class="v">92 048</span><span class="l">Unités vendues analysées</span></div>
+          </div>
+
+          <div class="finding">
+            <span class="eyebrow">Ce que ça a révélé</span>
+            La moyenne de 3,76 jours cachait le vrai sujet : des commandes à 65 jours que personne
+            n'avait identifiées, et près d'une référence sur deux sous le stock moyen.
+          </div>
+
+          <div class="chips">
+            <span class="chip">MySQL 8</span>
+            <span class="chip">DBeaver</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">DAX</span>
+            <span class="chip">Excalidraw</span>
+          </div>
+
+          <div class="links">
+            <a href="#">Code &amp; requêtes</a>
+            <a href="#">Rapport Power BI</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============ PROJET 02 ============ -->
+      <article class="project">
+        <div>
+          <div class="project-index">
+            <span class="num">Projet 02</span>
+            <span class="eyebrow">Python · Pipeline · Machine Learning</span>
+          </div>
+          <h3>WildMovie — pipeline IMDb</h3>
+          <p class="problem">
+            Un cinéma indépendant de la Creuse veut un moteur de recommandation, sans aucun historique
+            de préférences client — une situation de <em>cold start</em>. La matière première : les bases
+            publiques IMDb, plus de sept millions de films et dix millions de personnes.
+          </p>
+
+          <p class="role-note">
+            Projet d'équipe. <strong>Mon périmètre :</strong> la chaîne de préparation des données —
+            nettoyage du référentiel des personnes, construction des tables de dimension et de fait,
+            normalisation des clés qui alimentent le modèle.
+          </p>
+
+          <ul class="steps">
+            <li>
+              <strong>Nettoyage</strong>
+              <span>Séparation des professions confondues dans une colonne texte, typage des années, contrôle des doublons et des noms manquants, sur un fichier source de 294 Mo compressés.</span>
+            </li>
+            <li>
+              <strong>Fiabilisation des clés</strong>
+              <span>Normalisation systématique de <code>nconst</code> avant toute jointure — une clé sale perd des lignes en silence.</span>
+            </li>
+            <li>
+              <strong>Modélisation en étoile</strong>
+              <span>Passage d'identifiants concaténés dans une cellule à une table relationnelle via <code>explode</code>, puis dimension personne agrégée avec indicateurs de rôle et filmographie.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="kpis">
+            <div class="kpi"><span class="v">682 989</span><span class="l">Films candidats en entrée</span></div>
+            <div class="kpi"><span class="v">202 936</span><span class="l">Films notés retenus</span></div>
+            <div class="kpi"><span class="v">202 278</span><span class="l">Associations film–personne</span></div>
+            <div class="kpi"><span class="v">294 Mo</span><span class="l">Référentiel source compressé</span></div>
+          </div>
+
+          <div class="finding">
+            <span class="eyebrow">Ce que ça a apporté</span>
+            Un socle trois fois plus léger que le périmètre de départ, sans perte d'information utile — et
+            un arbitrage de notation IMDb / TMDB traçable film par film, plutôt qu'un choix implicite.
+          </div>
+
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">NumPy</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">Jupyter</span>
+            <span class="chip">Streamlit</span>
+          </div>
+
+          <div class="links">
+            <a href="#">Notebooks &amp; pipeline</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ============ PROJET 03 ============ -->
+      <article class="project">
+        <div>
+          <div class="project-index">
+            <span class="num">Projet 03</span>
+            <span class="eyebrow">Airflow · NLP · Power BI</span>
+          </div>
+          <h3>Olist — qualité de données et satisfaction client</h3>
+          <p class="problem">
+            Cent mille commandes réelles d'une marketplace brésilienne, entre 2016 et 2018.
+            La question posée : où se situe le point de rupture de la satisfaction client,
+            et que corriger en priorité ?
+          </p>
+
+          <p class="role-note">
+            Équipe Scrum de quatre. <strong>Mon périmètre :</strong> exploration et nettoyage de la base,
+            contrôle qualité automatisé, analyse textuelle des avis.
+          </p>
+
+          <ul class="steps">
+            <li>
+              <strong>Contrôle qualité automatisé</strong>
+              <span>DAG Airflow quotidien : chargement, audit de complétude par colonne, rapport horodaté — au lieu d'une vérification manuelle à chaque import.</span>
+            </li>
+            <li>
+              <strong>Analyse des avis en NLP</strong>
+              <span>Avis rédigés en portugais : traduction PT→FR par API avec gestion d'erreur non bloquante, tokenisation NLTK, <em>stopwords</em>, lemmatisation, puis nuages de mots opposant avis positifs et négatifs.</span>
+            </li>
+            <li>
+              <strong>Validation de l'échantillonnage</strong>
+              <span>Le coût d'appel de l'API rendait le traitement exhaustif irréaliste : les résultats sur un échantillon de 1 000 avis ont été comparés à la population complète avant d'être validés.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="kpis">
+            <div class="kpi"><span class="v">99 441</span><span class="l">Commandes auditées</span></div>
+            <div class="kpi"><span class="v">0,62 %</span><span class="l">Valeurs manquantes détectées</span></div>
+            <div class="kpi"><span class="v">2,98 %</span><span class="l">Dates de livraison absentes</span></div>
+            <div class="kpi"><span class="v">2 × 1 000</span><span class="l">Avis traduits et analysés</span></div>
+          </div>
+
+          <div class="finding">
+            <span class="eyebrow">Ce que ça a révélé</span>
+            Deux chemins indépendants pointaient le même problème : les mots dominants des avis négatifs,
+            et le fait que les seules données manquantes concernaient les dates de livraison.
+            Recommandation portée à l'équipe — optimiser les délais avant toute action sur le prix ou le catalogue.
+          </div>
+
+          <div class="chips">
+            <span class="chip">Apache Airflow</span>
+            <span class="chip">Python</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">NLTK</span>
+            <span class="chip">deep-translator</span>
+            <span class="chip">WordCloud</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Scrum</span>
+          </div>
+
+          <div class="links">
+            <a href="#">DAG &amp; notebooks</a>
+          </div>
+
+          <p class="caveat">
+            <strong>Limites assumées</strong>
+            Le DAG tourne sur un runner local qui reproduit la logique Airflow ; le déploiement sur un
+            scheduler complet reste à faire. Le calcul de marge n'a pas pu être fiabilisé faute de données
+            de coût réelles.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="eyebrow">Contact</span>
+      <h2>Parlons-en</h2>
+      <p>
+        Ouvert aux postes de Data Analyst en CDI, avec un intérêt particulier pour les secteurs
+        transport, mobilité et logistique — là où l'expérience terrain se transforme directement en lecture métier.
+      </p>
+    </div>
+
+    <div class="contact">
+      <div class="contact-lines">
+        <a href="mailto:eddyfaucher.pros@gmail.com"><span class="k">Email</span>eddyfaucher.pros@gmail.com</a>
+        <a href="https://www.linkedin.com/in/eddy-f"><span class="k">LinkedIn</span>linkedin.com/in/eddy-f</a>
+        <a href="https://github.com/PandaWildCode"><span class="k">GitHub</span>github.com/PandaWildCode</a>
+        <span><span class="k">Zone</span>Île-de-France — mobile France entière</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Eddy Faucher · Data Analyst · Titre professionnel niveau 6 — RNCP 37429
+  </footer>
+
+</div>
