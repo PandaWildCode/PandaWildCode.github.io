@@ -274,16 +274,37 @@
   .role-note strong { color: var(--ink); font-weight: 500; }
 
   .steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
-  .steps li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16px; }
+  .steps li {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 2px;
+    font-size: 16px;
+  }
   .steps li::before {
     content: "";
+    grid-column: 1;
+    grid-row: 1 / span 2;
     width: 7px; height: 7px;
     background: var(--signal);
-    margin-top: 11px;
-    margin-left: 4px;
+    margin-top: 9px;
+    margin-left: 3px;
   }
-  .steps strong { font-family: var(--display); font-weight: 600; font-size: 15px; display: block; margin-bottom: 1px; }
-  .steps span { color: var(--muted); font-size: 15.5px; line-height: 1.5; }
+  .steps strong {
+    grid-column: 2; grid-row: 1;
+    font-family: var(--display); font-weight: 600; font-size: 15px;
+  }
+  .steps span {
+    grid-column: 2; grid-row: 2;
+    color: var(--muted); font-size: 15.5px; line-height: 1.5;
+  }
+  .steps code, .project code {
+    font-family: var(--mono);
+    font-size: 0.86em;
+    background: var(--signal-soft);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
 
   .kpis {
     display: grid;
