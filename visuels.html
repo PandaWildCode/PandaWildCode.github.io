@@ -32,11 +32,11 @@
     position: relative; overflow: hidden; display: flex; align-items: center;
   }
   /* zone laissée libre pour la photo de profil, en bas à gauche */
-  #banner .contenu { margin-left: 430px; max-width: 900px; }
+  #banner .contenu { margin-left: 430px; max-width: 900px; margin-bottom: 52px; }
   #banner .eyebrow { font-size: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
   #banner .eyebrow i { display: block; width: 44px; height: 3px; background: var(--signal); }
   #banner h1 {
-    font-family: var(--display); font-weight: 800; font-size: 60px; line-height: 1.06;
+    font-family: var(--display); font-weight: 800; font-size: 56px; line-height: 1.08;
     letter-spacing: -0.028em; color: var(--ink); margin-bottom: 18px;
   }
   #banner h1 em { font-style: normal; color: var(--signal); }
@@ -44,15 +44,15 @@
     font-family: var(--serif); font-size: 22px; color: var(--muted); line-height: 1.45;
   }
   #banner .url {
-    position: absolute; right: 54px; bottom: 40px;
+    position: absolute; right: 54px; top: 40px;
     font-family: var(--mono); font-size: 15px; color: var(--muted); letter-spacing: 0.04em;
   }
   /* motif : une voie ferrée stylisée qui traverse le bas */
   #banner .voie {
-    position: absolute; left: 0; right: 0; bottom: 96px; height: 2px; background: var(--rule);
+    position: absolute; left: 0; right: 0; bottom: 62px; height: 2px; background: var(--rule);
   }
   #banner .gare {
-    position: absolute; bottom: 90px; width: 14px; height: 14px; border-radius: 50%;
+    position: absolute; bottom: 56px; width: 14px; height: 14px; border-radius: 50%;
     background: var(--paper); border: 2px solid var(--rule);
   }
   #banner .gare.now { background: var(--signal); border-color: var(--signal); }
