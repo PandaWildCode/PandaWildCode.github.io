@@ -600,8 +600,7 @@
           </div>
 
           <div class="links">
-            <a href="#">Code &amp; requêtes</a>
-            <a href="#">Rapport Power BI</a>
+            <a href="https://github.com/PandaWildCode/toys-and-models-logistique">Code &amp; requêtes</a>
           </div>
         </div>
       </article>
@@ -613,11 +612,12 @@
             <span class="num">Projet 02</span>
             <span class="eyebrow">Python · Pipeline · Machine Learning</span>
           </div>
-          <h3>WildMovie — pipeline IMDb</h3>
+          <h3>CinéMad — moteur de recommandation</h3>
           <p class="problem">
             Un cinéma indépendant de la Creuse veut un moteur de recommandation, sans aucun historique
             de préférences client — une situation de <em>cold start</em>. La matière première : les bases
-            publiques IMDb, plus de sept millions de films et dix millions de personnes.
+            publiques IMDb et TMDB, plus de sept millions de titres et dix millions de personnes.
+            L'application est en ligne et interrogeable.
           </p>
 
           <p class="role-note">
@@ -639,34 +639,38 @@
               <strong>Modélisation en étoile</strong>
               <span>Passage d'identifiants concaténés dans une cellule à une table relationnelle via <code>explode</code>, puis dimension personne agrégée avec indicateurs de rôle et filmographie.</span>
             </li>
+            <li>
+              <strong>Un défaut de conception corrigé</strong>
+              <span>Mises à l'échelle entre 0 et 1, les variables numériques rendaient l'année quasi constante — et sous une similarité cosinus, cette constante décidait seule du classement. Réencodées en tranches (décennie, notoriété, durée, note), elles ont rendu les recommandations pertinentes.</span>
+            </li>
           </ul>
         </div>
 
         <div>
           <div class="kpis">
-            <div class="kpi"><span class="v">682 989</span><span class="l">Films candidats en entrée</span></div>
-            <div class="kpi"><span class="v">202 936</span><span class="l">Films notés retenus</span></div>
-            <div class="kpi"><span class="v">202 278</span><span class="l">Associations film–personne</span></div>
+            <div class="kpi"><span class="v">202 643</span><span class="l">Films dans le catalogue</span></div>
+            <div class="kpi"><span class="v">1,2 M</span><span class="l">Dimensions du modèle</span></div>
+            <div class="kpi"><span class="v">0,4 s</span><span class="l">Temps de réponse</span></div>
             <div class="kpi"><span class="v">294 Mo</span><span class="l">Référentiel source compressé</span></div>
           </div>
 
           <div class="finding">
-            <span class="eyebrow">Ce que ça a apporté</span>
-            Un socle trois fois plus léger que le périmètre de départ, sans perte d'information utile — et
-            un arbitrage de notation IMDb / TMDB traçable film par film, plutôt qu'un choix implicite.
+            <span class="eyebrow">Ce que ça donne</span>
+            <em>Harry Potter à l'école des sorciers</em> remonte les six autres épisodes de la saga, entre 59 et
+            82 % de correspondance. <em>Le Parrain</em> remonte Le Parrain II, Apocalypse Now, Scarface et Heat.
           </div>
 
           <div class="chips">
             <span class="chip">Python</span>
             <span class="chip">Pandas</span>
-            <span class="chip">NumPy</span>
             <span class="chip">scikit-learn</span>
-            <span class="chip">Jupyter</span>
+            <span class="chip">SciPy</span>
             <span class="chip">Streamlit</span>
           </div>
 
           <div class="links">
-            <a href="#">Notebooks &amp; pipeline</a>
+            <a href="https://pandawildmovie.streamlit.app/">Essayer l'application</a>
+            <a href="https://github.com/PandaWildCode/wildmovie-imdb-pipeline">Code &amp; pipeline</a>
           </div>
         </div>
       </article>
@@ -733,7 +737,7 @@
           </div>
 
           <div class="links">
-            <a href="#">DAG &amp; notebooks</a>
+            <a href="https://github.com/PandaWildCode/olist-ecommerce-analytics">DAG &amp; notebooks</a>
           </div>
 
           <p class="caveat">
