@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Visuels — Eddy Faucher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&display=swap">
+<style>
+  :root {
+    --paper:  #F7F4F2;
+    --ink:    #191512;
+    --muted:  #6D625B;
+    --rule:   #E2DAD5;
+    --signal: #1B4F8C;
+    --steel:  #33566E;
+    --display: "Bricolage Grotesque", Arial, sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+    --serif: "Newsreader", Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #555; padding: 40px; display: flex; flex-direction: column; gap: 40px; align-items: flex-start; }
+
+  .eyebrow {
+    font-family: var(--mono); font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ============ BANNIÈRE LINKEDIN 1584 × 396 ============ */
+  #banner {
+    width: 1584px; height: 396px; background: var(--paper);
+    position: relative; overflow: hidden; display: flex; align-items: center;
+  }
+  /* zone laissée libre pour la photo de profil, en bas à gauche */
+  #banner .contenu { margin-left: 430px; max-width: 900px; margin-bottom: 52px; }
+  #banner .eyebrow { font-size: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+  #banner .eyebrow i { display: block; width: 44px; height: 3px; background: var(--signal); }
+  #banner h1 {
+    font-family: var(--display); font-weight: 800; font-size: 56px; line-height: 1.08;
+    letter-spacing: -0.028em; color: var(--ink); margin-bottom: 18px;
+  }
+  #banner h1 em { font-style: normal; color: var(--signal); }
+  #banner p {
+    font-family: var(--serif); font-size: 22px; color: var(--muted); line-height: 1.45;
+  }
+  #banner .url {
+    position: absolute; right: 54px; top: 40px;
+    font-family: var(--mono); font-size: 15px; color: var(--muted); letter-spacing: 0.04em;
+  }
+  /* motif : une voie ferrée stylisée qui traverse le bas */
+  #banner .voie {
+    position: absolute; left: 0; right: 0; bottom: 62px; height: 2px; background: var(--rule);
+  }
+  #banner .gare {
+    position: absolute; bottom: 56px; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--rule);
+  }
+  #banner .gare.now { background: var(--signal); border-color: var(--signal); }
+  #banner .gare span {
+    position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
+    font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap;
+  }
+  #banner .gare.now span { color: var(--signal); font-weight: 600; }
+
+  /* ============ COUVERTURE NOTION 1500 × 600 ============ */
+  #cover {
+    width: 1500px; height: 600px; background: var(--ink);
+    position: relative; overflow: hidden; display: flex; align-items: center;
+    padding: 0 90px;
+  }
+  #cover .eyebrow { color: #9A8E86; font-size: 16px; margin-bottom: 26px; }
+  #cover h1 {
+    font-family: var(--display); font-weight: 800; font-size: 92px; line-height: 1;
+    letter-spacing: -0.03em; color: #F7F4F2; margin-bottom: 24px;
+  }
+  #cover h1 em { font-style: normal; color: #6BA4DE; }
+  #cover p { font-family: var(--serif); font-size: 26px; color: #A79C94; max-width: 820px; line-height: 1.5; }
+  #cover .grille {
+    position: absolute; inset: 0; opacity: .16;
+    background-image: linear-gradient(#F7F4F2 1px, transparent 1px),
+                      linear-gradient(90deg, #F7F4F2 1px, transparent 1px);
+    background-size: 76px 76px;
+    mask-image: linear-gradient(100deg, transparent 42%, black 100%);
+    -webkit-mask-image: linear-gradient(100deg, transparent 42%, black 100%);
+  }
+  #cover .filet { position: absolute; left: 0; top: 0; bottom: 0; width: 10px; background: #6BA4DE; }
+
+  /* ============ CARTES PROJET 1200 × 630 ============ */
+  .carte {
+    width: 1200px; height: 630px; background: var(--paper);
+    position: relative; overflow: hidden; padding: 64px 70px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .carte .haut .eyebrow { font-size: 16px; margin-bottom: 22px; }
+  .carte h2 {
+    font-family: var(--display); font-weight: 800; font-size: 62px; line-height: 1.05;
+    letter-spacing: -0.028em; color: var(--ink); margin-bottom: 22px; max-width: 15ch;
+  }
+  .carte .sous {
+    font-family: var(--serif); font-size: 25px; color: var(--muted); line-height: 1.5; max-width: 34ch;
+  }
+  .carte .bas { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
+  .carte .chips { display: flex; flex-wrap: wrap; gap: 10px; max-width: 620px; }
+  .carte .chip {
+    font-family: var(--mono); font-size: 15px; padding: 7px 14px;
+    border: 1px solid var(--rule); color: var(--muted); border-radius: 3px;
+  }
+  .carte .chiffre { text-align: right; flex: none; }
+  .carte .chiffre b {
+    display: block; font-family: var(--mono); font-weight: 600; font-size: 62px;
+    line-height: 1; letter-spacing: -0.03em; color: var(--signal);
+    font-variant-numeric: tabular-nums;
+  }
+  .carte .chiffre span {
+    display: block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-top: 12px;
+  }
+  .carte .bandeau { position: absolute; left: 0; top: 0; bottom: 0; width: 12px; }
+  #card1 .bandeau { background: var(--signal); }
+  #card2 .bandeau { background: #8A6A1F; }
+  #card3 .bandeau { background: #2E7D6B; }
+  #card2 .chiffre b { color: #8A6A1F; }
+  #card3 .chiffre b { color: #2E7D6B; }
+</style>
+</head>
+<body>
+
+<!-- ========== BANNIÈRE LINKEDIN ========== -->
+<div id="banner">
+  <div class="voie"></div>
+  <div class="gare" style="left: 430px;"><span>2008</span></div>
+  <div class="gare" style="left: 700px;"><span>Trains voyageurs</span></div>
+  <div class="gare" style="left: 970px;"><span>Trains travaux</span></div>
+  <div class="gare now" style="left: 1240px;"><span>Data Analyst</span></div>
+
+  <div class="contenu">
+    <div class="eyebrow"><i></i> SQL · Python · Power BI · Airflow</div>
+    <h1>De la conduite de trains<br>à la <em>donnée</em>.</h1>
+    <p>Data Analyst certifié RNCP niveau 6 — Paris, mobile France entière</p>
+  </div>
+  <div class="url">pandawildcode.github.io</div>
+</div>
+
+<!-- ========== COUVERTURE NOTION ========== -->
+<div id="cover">
+  <div class="grille"></div>
+  <div class="filet"></div>
+  <div>
+    <div class="eyebrow">Portfolio · Data Analyst · 2026</div>
+    <h1>Eddy <em>Faucher</em></h1>
+    <p>Dix-huit ans à conduire des trains, aujourd'hui à lire des données.
+       Trois projets menés de la collecte à la décision.</p>
+  </div>
+</div>
+
+<!-- ========== CARTE 1 — TOYS &amp; MODELS ========== -->
+<div class="carte" id="card1">
+  <div class="bandeau"></div>
+  <div class="haut">
+    <div class="eyebrow">Projet · SQL · Business Intelligence</div>
+    <h2>Toys &amp; Models</h2>
+    <div class="sous">Délais de traitement et tension de stock d'un distributeur, rendus visibles en continu.</div>
+  </div>
+  <div class="bas">
+    <div class="chips">
+      <span class="chip">MySQL</span><span class="chip">DBeaver</span>
+      <span class="chip">Power BI</span><span class="chip">DAX</span>
+    </div>
+    <div class="chiffre"><b>52/110</b><span>références en tension</span></div>
+  </div>
+</div>
+
+<!-- ========== CARTE 2 — CINÉMAD ========== -->
+<div class="carte" id="card2">
+  <div class="bandeau"></div>
+  <div class="haut">
+    <div class="eyebrow">Projet · Python · Machine Learning</div>
+    <h2>CinéMad</h2>
+    <div class="sous">Un moteur de recommandation de films pour un cinéma indépendant, en situation de cold start.</div>
+  </div>
+  <div class="bas">
+    <div class="chips">
+      <span class="chip">Python</span><span class="chip">Pandas</span>
+      <span class="chip">scikit-learn</span><span class="chip">SciPy</span>
+      <span class="chip">Streamlit</span>
+    </div>
+    <div class="chiffre"><b>202 643</b><span>films interrogeables</span></div>
+  </div>
+</div>
+
+<!-- ========== CARTE 3 — OLIST ========== -->
+<div class="carte" id="card3">
+  <div class="bandeau"></div>
+  <div class="haut">
+    <div class="eyebrow">Projet · Airflow · NLP</div>
+    <h2>Olist</h2>
+    <div class="sous">Où se situe le point de rupture de la satisfaction client sur une marketplace de 100 000 commandes ?</div>
+  </div>
+  <div class="bas">
+    <div class="chips">
+      <span class="chip">Apache Airflow</span><span class="chip">Python</span>
+      <span class="chip">NLTK</span><span class="chip">Power BI</span>
+      <span class="chip">Scrum</span>
+    </div>
+    <div class="chiffre"><b>99 441</b><span>lignes auditées / jour</span></div>
+  </div>
+</div>
+
+</body>
+</html>
